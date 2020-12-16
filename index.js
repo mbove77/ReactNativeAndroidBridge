@@ -1,33 +1,11 @@
 import React from 'react';
+import 'react-native-gesture-handler';
+import App from './App';
 import {
   AppRegistry,
-  StyleSheet,
-  Text,
-  View
 } from 'react-native';
-
-class HelloWorld extends React.Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.hello}>Hola, Martin</Text>
-      </View>
-    );
-  }
-}
-var styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center'
-  },
-  hello: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10
-  }
-});
 
 AppRegistry.registerComponent(
   'MyReactNativeApp',
-  () => HelloWorld
+  () => App
 );
