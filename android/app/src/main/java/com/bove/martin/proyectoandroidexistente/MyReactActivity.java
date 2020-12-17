@@ -35,6 +35,7 @@ public class MyReactActivity extends AppCompatActivity implements DefaultHardwar
         // Packages that cannot be autolinked yet can be added manually here, for example:
         // packages.add(new MyReactNativePackage());
         // Remember to include them in `settings.gradle` and `app/build.gradle` too.
+        packages.add(new MyAppPackage());
 
         mReactInstanceManager = ReactInstanceManager.builder()
                 .setApplication(getApplication())
@@ -52,7 +53,6 @@ public class MyReactActivity extends AppCompatActivity implements DefaultHardwar
         initialProperties.putString("testString", "Tittle From Native Android.");
 
         mReactRootView.startReactApplication(mReactInstanceManager, "MyReactNativeApp", initialProperties);
-
         setContentView(mReactRootView);
 
         /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -131,4 +131,5 @@ public class MyReactActivity extends AppCompatActivity implements DefaultHardwar
         }
         return super.onKeyUp(keyCode, event);
     }
+
 }

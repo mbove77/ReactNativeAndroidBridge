@@ -4,6 +4,9 @@ import Http from 'MyReactNativeApp/src/libs/http';
 import CoinItem from "./CoinItem";
 import Colors from "../res/Colors";
 import CoinSearchComp from "./CoinSearchComp";
+import Pressable from "react-native/Libraries/Components/Pressable/Pressable";
+
+import { NativeModules } from 'react-native';
 
 class CoinScreen extends Component {
 
@@ -36,12 +39,26 @@ class CoinScreen extends Component {
     this.setState({coins: coinsFiltered})
   }
 
+  callNative = () => {
+    NativeModules
+        .NativeModule
+        .arbitraryMethod('some param')
+        .then(result => {
+            console.log("Native FN", result)
+        });
+  }
+
   render() {
     const {coins, allCoins, loading} = this.state
 
     return (
 
      <View style={styles.container}>
+
+       <Pressable onPress={this.callNative} style={styles.btnCall}>
+         <Text style={styles.btnCallText}>Call Native FN</Text>
+       </Pressable>
+
        <CoinSearchComp onChange={this.searchChange} />
        {loading ? <ActivityIndicator style={styles.loader} color="#FFF" size="large" /> : null}
 
@@ -54,8 +71,6 @@ class CoinScreen extends Component {
      </View>
     );
   }
-
-
 }
 
 const styles = StyleSheet.create({
@@ -75,6 +90,14 @@ const styles = StyleSheet.create({
   },
   loader: {
     marginTop: 50
+  },
+  btnCall : {
+    padding: 8,
+    borderRadius: 8,
+    backgroundColor: Colors.picton
+  },
+  btnCallText: {
+    color: Colors.white
   }
 })
 export default CoinScreen;
