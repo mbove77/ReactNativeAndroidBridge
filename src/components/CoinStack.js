@@ -7,7 +7,7 @@ import Colors from "../res/Colors";
 
 const Stack = createStackNavigator();
 
-const CoinStack = () => {
+const CoinStack = (props) => {
   return (
     <Stack.Navigator screenOptions={{
       headerStyle: {
@@ -15,7 +15,7 @@ const CoinStack = () => {
       },
       headerTintColor: Colors.white
     }}>
-      <Stack.Screen name='CoinScreen' component={CoinScreen} />
+      <Stack.Screen name={props.windowTittle} component={CoinScreen} />
       <Stack.Screen name='CoinDetail' component={CoinDetailScreen} />
     </Stack.Navigator>
   )

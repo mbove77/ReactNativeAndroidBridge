@@ -17,7 +17,8 @@ import FavoriteStack from "./src/components/favorites/FavoriteStack";
 
 const Tabs = createBottomTabNavigator()
 
-const App = () => {
+const App = (props) => {
+    console.log("props", props.testString)
   return (
     <NavigationContainer>
         <Tabs.Navigator
@@ -31,7 +32,7 @@ const App = () => {
           }>
           <Tabs.Screen
             name="Coins"
-            component={CoinStack}
+            children={() => <CoinStack windowTittle={props.testString} />}
             options={ {
               tabBarIcon: ({size, color}) => (
                 <Image
